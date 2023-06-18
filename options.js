@@ -78,28 +78,37 @@ optionsForm.addEventListener('submit', (e) => {
     const change24h = document.querySelector('#h24');
     const change7d = document.querySelector('#days7');
     const change30d = document.querySelector('#days30');
- 
+    const volumeSpan = document.querySelector('#volumeSpan');
+    const changeSpan = document.querySelector('#changeSpan');
 
         if(change1h.checked == true){
             timePeriod = '1h';
+            volumeSpan.textContent = ` (${timePeriod})`;
+            changeSpan.textContent = ` (${timePeriod})`;
             // recentSortedTable(undefined, undefined, timePeriod);
             fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection);
             showPopup(`Hourly Price Change`);
             console.log('Displaying 1h data.')
         }else if(change24h.checked == true){
             timePeriod = '24h';
+            volumeSpan.textContent = ` (${timePeriod})`;
+            changeSpan.textContent = ` (${timePeriod})`;
             // recentSortedTable(undefined, undefined, timePeriod);
             fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection);
             showPopup(`Daily Price Change`);
             console.log('Displaying 24 data')
         }else if(change7d.checked == true){
             timePeriod = '7d';
+            volumeSpan.textContent = ` (${timePeriod})`;
+            changeSpan.textContent = ` (${timePeriod})`;
             // recentSortedTable(undefined, undefined, timePeriod);
             fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection);
             showPopup(`Weekly Price Change`);
             console.log('Displaying 7d data')
         }else if(change30d.checked == true){
             timePeriod = '30d';
+            volumeSpan.textContent = ` (${timePeriod})`;
+            changeSpan.textContent = ` (${timePeriod})`;
             // recentSortedTable(undefined, undefined, timePeriod);
             fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection);
             showPopup(`Monthly Price Change`);
