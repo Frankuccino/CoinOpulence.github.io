@@ -29,7 +29,21 @@ function showModal(uuid) {
       modalLogo.src = iconUrl;
       modalLogo.alt = `${symbol} icon`;
       modalSymbol.textContent = symbol;
-      modalPrice.textContent = `Price: $${parseFloat(price).toLocaleString('en-US')}`;
+      modalPrice.textContent = `$${formatPrice(price)}`;
+      function formatPrice(price) {
+        const parsedPrice = parseFloat(price);
+        if (parsedPrice === 0) {
+          return '0';
+        }
+        const decimalDigits = Math.max(2, 2 - Math.floor(Math.log10(parsedPrice)));
+        const formattedPrice = parsedPrice.toLocaleString('en-US', {
+          minimumFractionDigits: decimalDigits,
+          maximumFractionDigits: decimalDigits
+        });
+      
+        return formattedPrice;
+    } 
+
       modalMarketCap.textContent = `Market Cap: $${parseFloat(marketCap).toLocaleString('en-US')}`;
       modalVol24.textContent = `Volume(24h): $${parseFloat(volume).toLocaleString('en-US')}`;
       modalCh24.textContent = `${change}%`;
