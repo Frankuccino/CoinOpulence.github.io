@@ -114,6 +114,20 @@ optionsForm.addEventListener('submit', (e) => {
             showPopup(`Monthly Price Change`);
             console.log('Displaying 30d data.')
         }
+
+    const chart1Day = document.querySelector('#chart1');
+    const chart7Days = document.querySelector('#chart7');
+    const chart30Days = document.querySelector('#chart30');
+
+        if(chart1Day.checked == true){
+            setChartDays = 1;
+        }else if(chart7Days.checked == true){
+            setChartDays = 7;
+            showPopup(`Monthly Price Change`);
+        }else if(chart30Days.checked == true){
+            setChartDays = 30;
+            showPopup(`Monthly Price Change`);
+        }
         // recentSortedTable(undefined, undefined, timePeriod);
         // fetchCoins(undefined, undefined, recentTimePeriod, recentHeaderType, recentSortDirection);
         // recentSortedTable();

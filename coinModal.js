@@ -60,9 +60,13 @@ function showModal(uuid) {
     .catch(error => console.log(error));
 }
 
+
+let setChartDays = 1;
 // Function to fetch and load chart data
 function fetchChartData(uuid, numberOfDays = 1, interval = "hour") {
   const url = `https://coinranking1.p.rapidapi.com/coin/${uuid}/ohlc`;
+  
+  numberOfDays = setChartDays;
   
   const params = {
     referenceCurrencyUuid: 'yhjMzLPhuIDl',
