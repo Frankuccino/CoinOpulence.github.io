@@ -4,7 +4,7 @@ const optionButton = document.querySelector('#customize');
 const optionsForm = document.querySelector('#optionsForm');
 
 // Set the default time period which would be changed based on the customize option user picked.
-let timePeriod = '';
+let timePeriod = '24h';
 
 const openOptions = () => {
     optionsContainer.style.display = 'block';
