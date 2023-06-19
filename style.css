@@ -162,6 +162,102 @@ section {
   margin-right: 0; 
 }
 
+.dropdown {
+  position: relative;
+}
+
+.caret-currency {
+  margin-left: 4px;
+  position: absolute;
+  right: 1em;
+  top: 0.85em;
+  color: #fff;
+}
+
+.dropdown input {
+  border-radius: 0.3em;
+  border: none;
+  padding: 0.5em;
+  align-self: center;
+  margin: 0.8em;
+  width: 5em;
+  background-color: #41A883;
+}
+
+.dropdown input::placeholder{
+  color: #fff;
+}
+
+.dropdown input.search {
+  color: white;
+}
+
+.dropdown .menu {
+  display: none;
+}
+
+.dropdown input:focus ~ .menu {
+  display: block;
+}
+
+.menu {
+  width: 14em;
+  position: absolute;
+  top: 100%;
+  right: 0.5em;
+  z-index: 2;
+  background-color: #fff;
+  padding: 0;
+  border-radius: 0.3em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  max-height: 14em;
+  overflow-y: auto;
+
+  scrollbar-color: #aaa #eee;
+  scrollbar-width: thin; 
+}
+
+.menu::-webkit-scrollbar {
+  width: 0.4em;
+}
+.menu::-webkit-scrollbar-track {
+  background-color: #eee;
+}
+
+.menu::-webkit-scrollbar-thumb {
+  background-color: #b8b8b8; 
+}
+
+.option {
+  font-size: 0.7em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+.activeCurrency{
+  background-color:#f5f5f5;
+  border-radius: 0.3em;
+  font-weight: bolder;
+}
+
+.option:hover {
+  background-color: #f5f5f5;
+  border-radius: 0.3em;
+}
+
+.option .currencyName {
+  color: gray;
+}
+
+.option .currencySymbol {
+  font-weight: 500;
+}
+
+
+
 #refresh,
 #customize {
   padding: 0.3em 0.75em;

@@ -5,6 +5,8 @@
             Coin.Opulence - Home
         </title>
         <meta name="viewport" content="width=device-width shrink-to-fit=no">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=0.6">  
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
         <link rel="stylesheet" href="style.css">
@@ -64,6 +66,48 @@
         <section class="tableSection">
 
             <div id="buttons">
+                <!-- Create a function for a searchable and toggeable for the fiat currencies. -->
+                <div class="dropdown">
+                    <input type="text" aria-autocomplete="list" class="search" placeholder="USD">
+                    <i class="bi-caret-down-fill caret-currency"></i>
+                    <!-- <div class="selected-currency">USD</div> -->
+                    <div class="menu transition" role="listbox">
+                        <div role="option" class="option">
+                            <span class="currencyName">US Dollar</span>
+                            <span class="currencySymbol">USD</span>
+                        </div>
+                        <div role="option" class="option">
+                            <span class="currencyName">US Dollar</span>
+                            <span class="currencySymbol">USD</span>
+                        </div>
+                        <div role="option" class="option activeCurrency">
+                            <span class="currencyName">US Dollar</span>
+                            <span class="currencySymbol">USD</span>
+                        </div>
+                        <div role="option" class="option">
+                            <span class="currencyName">US Dollar</span>
+                            <span class="currencySymbol">USD</span>
+                        </div>
+                        <div role="option" class="option">
+                            <span class="currencyName">US Dollar</span>
+                            <span class="currencySymbol">USD</span>
+                        </div>
+                        <div role="option" class="option">
+                            <span class="currencyName">US Dollar</span>
+                            <span class="currencySymbol">USD</span>
+                        </div>
+                        <div role="option" class="option">
+                            <span class="currencyName">US Dollar</span>
+                            <span class="currencySymbol">USD</span>
+                        </div>
+                        <div role="option" class="option">
+                            <span class="currencyName">US Dollar</span>
+                            <span class="currencySymbol">USD</span>
+                        </div>
+                      <!-- Currency options will be dynamically generated here -->
+                    </div>
+                  </div>
+                
                 <button id="refresh">
                     <i class="bi bi-arrow-counterclockwise"></i>
                 </button>
@@ -221,7 +265,7 @@
         <script src="coinModal.js"></script>
         <script src="searchform.js"></script>
         <script src="favorites.js"></script>
-        <script src="newsLetter.js"></script>
+        <!-- <script src="newsLetter.js"></script> -->
        
     </body>
 </html>
