@@ -1,15 +1,15 @@
 
-const paramsSM = {
-  referenceCurrencyUuid: currencyUuid,
-  timePeriod: '24h'
-};
-
 const headers = {
   'X-RapidAPI-Key': 'a9c927165cmsh44f527792645fccp1954a7jsn1814abc98e08',
   'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
 };
 
-function showModal(uuid) {
+function showModal(uuid, currencyUuid) {
+  const paramsSM = {
+    referenceCurrencyUuid: currencyUuid,
+    timePeriod: timePeriod
+  };
+
   axios.get(`https://coinranking1.p.rapidapi.com/coin/${uuid}`, { paramsSM, headers })
     .then(response => {
       const coinData = response.data.data.coin;
@@ -68,7 +68,7 @@ function showModal(uuid) {
       modal.addEventListener('click', () => {
         modal.style.display = 'none';
       });
-      fetchChartData(uuid);
+      fetchChartData(uuid, undefined, undefined, currencyUuid);
       
     })
     .catch(error => console.log(error));
@@ -77,7 +77,7 @@ function showModal(uuid) {
 
 let setChartDays = 1;
 // Function to fetch and load chart data
-function fetchChartData(uuid, numberOfDays = 1, interval = "hour") {
+function fetchChartData(uuid, numberOfDays = 1, interval = "hour", currencyUuid) {
   const url = `https://coinranking1.p.rapidapi.com/coin/${uuid}/ohlc`;
   
   numberOfDays = setChartDays;

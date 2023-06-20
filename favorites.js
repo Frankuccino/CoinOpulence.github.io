@@ -84,4 +84,4 @@ function updateFavoritesTable() {
 }
 
 
-fetchMarketData();
+fetchMarketData(currencyUuid);

@@ -64,15 +64,16 @@ function fiatCurrency() {
 
                 searchPlaceHolder = document.querySelector('.search');
                 option.addEventListener('click', () => {
-
+                    
                     currencyUuid = uuid;
                     currencySign = sign;
                     searchPlaceHolder.placeholder = symbol;
 
                     option.classList.add('activeCurrency');
 
-                    recentSortedTable(undefined, undefined, undefined, uuid, sign)
-                    fetchMarketData(currencyUuid)
+                    recentSortedTable(recentHeaderType, recentSortDirection, timePeriod, uuid, sign)
+                    fetchMarketData(uuid)
+                    // fetchChartData(undefined, undefined, undefined, uuid)
                 });
 
                 const currencyName = document.createElement('span');

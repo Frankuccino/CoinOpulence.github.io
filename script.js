@@ -168,7 +168,7 @@ const apiKey = 'a9c927165cmsh44f527792645fccp1954a7jsn1814abc98e08';
             // Check if the event target is the button for adding to favorites
             const isFavoritesButton = event.target.classList.contains('bi');
             if (!isFavoritesButton) {
-              showModal(uuid);
+              showModal(uuid, currencyUuid);
               // fetchChartData(uuid);
             }
           });
@@ -271,14 +271,14 @@ const limit = 50;
 showMoreButton.addEventListener('click', () => {
     offset += limit; // Increment the offset by the limit value
     // fetchCoins(limit, offset);
-    fetchCoins(limit, offset, timePeriod, recentHeaderType, recentSortDirection);
+    fetchCoins(limit, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
   });
 
 const showMoreButton_1 = document.getElementById('showMoreButton-1');
 showMoreButton_1.addEventListener('click', () => {
 offset -= limit; // Increment the offset by the limit value
 // fetchCoins(limit, offset);
-fetchCoins(limit, offset, timePeriod, recentHeaderType, recentSortDirection);
+fetchCoins(limit, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
 });
 
 // Function for displaying the popup message
