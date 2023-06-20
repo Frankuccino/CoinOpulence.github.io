@@ -6,9 +6,9 @@ function adjustBodyHeight() {
   }
   
 // Function for fetching market data
-function fetchMarketData() {
+function fetchMarketData(currencyUuid = 'yhjMzLPhuIDl') {
 // Make the API request
-fetch('https://coinranking1.p.rapidapi.com/stats', {
+fetch(`https://coinranking1.p.rapidapi.com/stats?referenceCurrencyUuid=${currencyUuid}`, {
     method: 'GET',
     headers: {
     'X-RapidAPI-Key': `${apiKey}`,
@@ -33,7 +33,7 @@ fetch('https://coinranking1.p.rapidapi.com/stats', {
     
     function updateMarketCap() {
       const formattedMarketCap = displayLongValueMarketCap ? parseFloat(totalMarketCap).toLocaleString('en-US'): formatMarketCap(totalMarketCap);
-      marketCapElement.textContent = `$ ${formattedMarketCap}`;
+      marketCapElement.textContent = `${currencySign || ''}${formattedMarketCap}`;
     }
 
     function formatMarketCap(marketCap) {
@@ -61,7 +61,7 @@ fetch('https://coinranking1.p.rapidapi.com/stats', {
     function updateVolume() {
       // total24hVolume.toLocaleString(undefined, { maximumFractionDigits: 2 })
       const formattedVolume = displayLongValue ? parseFloat(totalMarketCap).toLocaleString('en-US') : formatVolume(total24hVolume);
-      tradingVolumeElement.textContent = `$ ${formattedVolume}`;
+      tradingVolumeElement.textContent = `${currencySign || ''}${formattedVolume}`;
     }
 
     function formatVolume(volume) {
@@ -116,7 +116,7 @@ const refreshButton = document.getElementById('refresh');
 refreshButton.addEventListener('click', () => {
   // Call the fetchCoins function with the desired parameters
   showPopup("Data is reloading...");
-  fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection);
+  fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
   // recentSortedTable();
   fetchMarketData();
 });
@@ -125,10 +125,10 @@ refreshButton.addEventListener('click', () => {
 const apiKey = 'a9c927165cmsh44f527792645fccp1954a7jsn1814abc98e08';
 
 // Function for displaying coins
-  function fetchCoins(limit = 50 , offset, timePeriod = '24h', orderBy = 'marketCap', orderDirection = 'desc') {
+  function fetchCoins(limit = 50 , offset, timePeriod = '24h', orderBy = 'marketCap', orderDirection = 'desc', currencyUuid, currencySign = '$' ) {
     const url = 'https://coinranking1.p.rapidapi.com/coins';
     const params = {
-      referenceCurrencyUuid: 'yhjMzLPhuIDl',
+      referenceCurrencyUuid: currencyUuid,
       timePeriod: timePeriod,
       'tiers[0]': '1', 
       orderBy: orderBy,
@@ -198,7 +198,7 @@ const apiKey = 'a9c927165cmsh44f527792645fccp1954a7jsn1814abc98e08';
    
           const priceCell = document.createElement('td');
           priceCell.classList.add('price');
-          priceCell.textContent = `$${formatPrice(price)}`;
+          priceCell.textContent = `${currencySign || ''}${formatPrice(price)}`;
           // function for formatting the price to the table
           function formatPrice(price) {
             const parsedPrice = parseFloat(price);
@@ -216,11 +216,11 @@ const apiKey = 'a9c927165cmsh44f527792645fccp1954a7jsn1814abc98e08';
 
         const marketCapCell = document.createElement('td');
         marketCapCell.classList.add('marketCaptd');
-        marketCapCell.textContent = `$${parseFloat(marketCap).toLocaleString('en-US')}`;
+        marketCapCell.textContent = `${currencySign || ''}${parseFloat(marketCap).toLocaleString('en-US')}`;
   
         const volumeCell = document.createElement('td');
         volumeCell.classList.add('vol24h');
-        volumeCell.textContent = parseFloat(volume).toLocaleString('en-US');
+        volumeCell.textContent = `${currencySign || ''}${parseFloat(volume).toLocaleString('en-US')}`;
   
         const changeCell = document.createElement('td');
         changeCell.classList.add('ch24h');
@@ -382,7 +382,7 @@ function toggleSortDirection(sortIcon) {
 priceHeader.addEventListener('click', () => {
   const sortIcon = priceHeader.querySelector('.sortIcon');
   const sortDirection = toggleSortDirection(sortIcon);
-  recentSortedTable('price', sortDirection, timePeriod || '24h');
+  recentSortedTable('price', sortDirection, timePeriod || '24h', currencyUuid, currencySign);
   showPopup(`Sorting The Table by Price`);
 });
 
@@ -390,7 +390,7 @@ priceHeader.addEventListener('click', () => {
 marketCapHeader.addEventListener('click', () => {
   const sortIcon = marketCapHeader.querySelector('.sortIcon');
   const sortDirection = toggleSortDirection(sortIcon);
-  recentSortedTable('marketCap', sortDirection, timePeriod || '24h');
+  recentSortedTable('marketCap', sortDirection, timePeriod || '24h', currencyUuid, currencySign);
   showPopup(`Sorting The Table by Market Cap`);
 });
 
@@ -398,7 +398,7 @@ marketCapHeader.addEventListener('click', () => {
 volumeHeader.addEventListener('click', () => {
   const sortIcon = volumeHeader.querySelector('.sortIcon');
   const sortDirection = toggleSortDirection(sortIcon);
-  recentSortedTable('24hVolume', sortDirection, timePeriod || '24h');
+  recentSortedTable('24hVolume', sortDirection, timePeriod || '24h', currencyUuid, currencySign);
   showPopup(`Sorting The Table by Volume`);
 });
 
@@ -406,7 +406,7 @@ volumeHeader.addEventListener('click', () => {
 changeHeader.addEventListener('click', () => {
   const sortIcon = changeHeader.querySelector('.sortIcon');
   const sortDirection = toggleSortDirection(sortIcon);
-  recentSortedTable('change', sortDirection, timePeriod || '24h');
+  recentSortedTable('change', sortDirection, timePeriod || '24h', currencyUuid, currencySign);
   showPopup(`Sorting The Table by Change`);
 });
 
@@ -414,11 +414,13 @@ changeHeader.addEventListener('click', () => {
 let recentHeaderType = 'marketCap';
 let recentSortDirection = 'desc';
 
-function recentSortedTable(headerType, sortDirection, timePeriod) {
+function recentSortedTable(headerType, sortDirection, timePeriod, uuid, sign) {
+  currencyUuid = uuid;
+  currencySign = sign;
   recentHeaderType = headerType;
   recentSortDirection = sortDirection;
   recentTimePeriod = timePeriod;
-  fetchCoins(undefined, undefined, recentTimePeriod, recentHeaderType, recentSortDirection);
+  fetchCoins(undefined, undefined, recentTimePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
 }
 
 fetchMarketData();

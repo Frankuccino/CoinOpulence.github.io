@@ -200,6 +200,10 @@ section {
   display: block;
 }
 
+.menu:hover {
+  display: block;
+}
+
 .menu {
   width: 14em;
   position: absolute;

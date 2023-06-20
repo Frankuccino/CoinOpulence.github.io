@@ -1,6 +1,6 @@
 
 const paramsSM = {
-  referenceCurrencyUuid: 'yhjMzLPhuIDl',
+  referenceCurrencyUuid: currencyUuid,
   timePeriod: '24h'
 };
 
@@ -29,7 +29,7 @@ function showModal(uuid) {
       modalLogo.src = iconUrl;
       modalLogo.alt = `${symbol} icon`;
       modalSymbol.textContent = symbol;
-      modalPrice.textContent = `$${formatPrice(price)}`;
+      modalPrice.textContent = `${currencySign || ''}${formatPrice(price)}`;
       function formatPrice(price) {
         const parsedPrice = parseFloat(price);
         if (parsedPrice === 0) {
@@ -44,8 +44,8 @@ function showModal(uuid) {
         return formattedPrice;
     } 
 
-      modalMarketCap.textContent = `Market Cap: $${parseFloat(marketCap).toLocaleString('en-US')}`;
-      modalVol24.textContent = `Volume(24h): $${parseFloat(volume).toLocaleString('en-US')}`;
+      modalMarketCap.textContent = `Market Cap: ${currencySign || ''}${parseFloat(marketCap).toLocaleString('en-US')}`;
+      modalVol24.textContent = `Volume(24h): ${currencySign || ''}${parseFloat(volume).toLocaleString('en-US')}`;
       modalCh24.textContent = `${change}%`;
       modalDescription.textContent = description || `No information or description about ${name} is currently available at the moment to be shown, please do your own research and view ${websiteUrl}.`;
 
@@ -83,7 +83,7 @@ function fetchChartData(uuid, numberOfDays = 1, interval = "hour") {
   numberOfDays = setChartDays;
   
   const params = {
-    referenceCurrencyUuid: 'yhjMzLPhuIDl',
+    referenceCurrencyUuid: currencyUuid,
     interval: interval,
     limit: numberOfDays * 24
     // limit is number of days times number of days so number of days is 1 so 24 points in shown in the chart.

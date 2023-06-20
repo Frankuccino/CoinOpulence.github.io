@@ -86,7 +86,7 @@ optionsForm.addEventListener('submit', (e) => {
             volumeSpan.textContent = ` (${timePeriod})`;
             changeSpan.textContent = ` (${timePeriod})`;
             // recentSortedTable(undefined, undefined, timePeriod);
-            fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection);
+            fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
             showPopup(`Hourly Price Change`);
             console.log('Displaying 1h data.')
         }else if(change24h.checked == true){
@@ -94,7 +94,7 @@ optionsForm.addEventListener('submit', (e) => {
             volumeSpan.textContent = ` (${timePeriod})`;
             changeSpan.textContent = ` (${timePeriod})`;
             // recentSortedTable(undefined, undefined, timePeriod);
-            fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection);
+            fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
             showPopup(`Daily Price Change`);
             console.log('Displaying 24 data')
         }else if(change7d.checked == true){
@@ -102,7 +102,7 @@ optionsForm.addEventListener('submit', (e) => {
             volumeSpan.textContent = ` (${timePeriod})`;
             changeSpan.textContent = ` (${timePeriod})`;
             // recentSortedTable(undefined, undefined, timePeriod);
-            fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection);
+            fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
             showPopup(`Weekly Price Change`);
             console.log('Displaying 7d data')
         }else if(change30d.checked == true){
@@ -110,7 +110,7 @@ optionsForm.addEventListener('submit', (e) => {
             volumeSpan.textContent = ` (${timePeriod})`;
             changeSpan.textContent = ` (${timePeriod})`;
             // recentSortedTable(undefined, undefined, timePeriod);
-            fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection);
+            fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
             showPopup(`Monthly Price Change`);
             console.log('Displaying 30d data.')
         }
@@ -121,12 +121,13 @@ optionsForm.addEventListener('submit', (e) => {
 
         if(chart1Day.checked == true){
             setChartDays = 1;
+            showPopup(`Daily Chart Change`);
         }else if(chart7Days.checked == true){
             setChartDays = 7;
-            showPopup(`Monthly Price Change`);
+            showPopup(`Weekly Chart Change`);
         }else if(chart30Days.checked == true){
             setChartDays = 30;
-            showPopup(`Monthly Price Change`);
+            showPopup(`Monthly Chart Change`);
         }
         // recentSortedTable(undefined, undefined, timePeriod);
         // fetchCoins(undefined, undefined, recentTimePeriod, recentHeaderType, recentSortDirection);
