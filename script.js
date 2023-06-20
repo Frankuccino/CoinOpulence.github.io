@@ -118,7 +118,7 @@ refreshButton.addEventListener('click', () => {
   showPopup("Data is reloading...");
   fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
   // recentSortedTable();
-  fetchMarketData();
+  fetchMarketData(currencyUuid);
 });
 
 
