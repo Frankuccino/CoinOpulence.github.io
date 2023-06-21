@@ -271,14 +271,12 @@ const page4 = document.querySelector('.pageN4');
 const page5 = document.querySelector('.pageN5');
 const currentPageN = document.querySelector('.currentPage');
 
-// Check line 468 for the globally declared variables. 
-
 const showMoreButton = document.getElementById('showMoreButton');
 showMoreButton.addEventListener('click', () => {
     offset += limit; // Increment the offset by the limit value
     // fetchCoins(limit, offset);
     // fetchCoins(limit, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
-    recentSortedTable(recentHeaderType, recentSortDirection, recentTimePeriod, currencyUuid, currencySign, offset);
+    recentSortedTable(recentHeaderType, recentSortDirection, timePeriod, currencyUuid, currencySign, offset);
   });
 
 page1.addEventListener('click', () => {
@@ -287,7 +285,7 @@ page1.addEventListener('click', () => {
   page1.classList.add('currentPage');
   offset = 0;
   // fetchCoins(limit, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
-  recentSortedTable(recentHeaderType, recentSortDirection, recentTimePeriod, currencyUuid, currencySign, offset);
+  recentSortedTable(recentHeaderType, recentSortDirection, timePeriod, currencyUuid, currencySign, offset);
 })
 
 page2.addEventListener('click', () => {
@@ -296,7 +294,7 @@ page2.addEventListener('click', () => {
   page2.classList.add('currentPage');
   offset = 50;
   // fetchCoins(limit, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
-  recentSortedTable(recentHeaderType, recentSortDirection, recentTimePeriod, currencyUuid, currencySign, offset);
+  recentSortedTable(recentHeaderType, recentSortDirection, timePeriod, currencyUuid, currencySign, offset);
 })
 
 page3.addEventListener('click', () => {
@@ -305,7 +303,7 @@ page3.addEventListener('click', () => {
   page3.classList.add('currentPage');
   offset = 100;
   // fetchCoins(limit, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
-  recentSortedTable(recentHeaderType, recentSortDirection, recentTimePeriod, currencyUuid, currencySign, offset);
+  recentSortedTable(recentHeaderType, recentSortDirection, timePeriod, currencyUuid, currencySign, offset);
 })
 
 page4.addEventListener('click', () => {
@@ -314,7 +312,7 @@ page4.addEventListener('click', () => {
   page4.classList.add('currentPage');
   offset = 150;
   // fetchCoins(limit, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
-  recentSortedTable(recentHeaderType, recentSortDirection, recentTimePeriod, currencyUuid, currencySign, offset);
+  recentSortedTable(recentHeaderType, recentSortDirection, timePeriod, currencyUuid, currencySign, offset);
 })
 
 page5.addEventListener('click', () => {
@@ -323,7 +321,7 @@ page5.addEventListener('click', () => {
   page5.classList.add('currentPage');
   offset = 200;
   // fetchCoins(limit, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
-  recentSortedTable(recentHeaderType, recentSortDirection, recentTimePeriod, currencyUuid, currencySign, offset);
+  recentSortedTable(recentHeaderType, recentSortDirection, timePeriod, currencyUuid, currencySign, offset);
 })
 
 
@@ -384,31 +382,6 @@ const priceHeader = document.querySelector('.obPrice');
 const marketCapHeader = document.querySelector('.obMarketCap');
 const volumeHeader = document.querySelector('.obVolume');
 const changeHeader = document.querySelector('.obChange');
-
-// priceHeader.addEventListener('click', () => {
-//   const sortIcon = priceHeader.querySelector('.sortIcon');
-//   fetchCoins(undefined, undefined, undefined, 'price', toggleSortDirection(sortIcon));
-//   showPopup(`Sorting The Table by Price`);
-// });
-
-// marketCapHeader.addEventListener('click', () => {
-//   const sortIcon = marketCapHeader.querySelector('.sortIcon');
-//   fetchCoins(undefined, undefined, undefined, 'marketCap', toggleSortDirection(sortIcon));
-//   showPopup(`Sorting The Table by Market Cap`);
-// });
-
-// volumeHeader.addEventListener('click', () => {
-//   const sortIcon = volumeHeader.querySelector('.sortIcon');
-//   fetchCoins(undefined, undefined, undefined, '24hVolume', toggleSortDirection(sortIcon));
-//   showPopup(`Sorting The Table by Volume`);
-// });
-
-// changeHeader.addEventListener('click', () => {
-//   const sortIcon = changeHeader.querySelector('.sortIcon');
-//   fetchCoins(undefined, undefined, undefined, 'change', toggleSortDirection(sortIcon));
-//   showPopup(`Sorting The Table by Change`);
-// });
-
 
 function toggleSortDirection(sortIcon) {
   const isDescending = sortIcon.classList.contains('bi-caret-down-fill');
