@@ -19,18 +19,27 @@ function openMail() {
 
 setTimeout(openMail, 5000);
 
+// NEW
 window.addEventListener("load", function() {
   const form = document.getElementById('mailForm');
+  const message = document.querySelector('#mailMessage');
   form.addEventListener("submit", function(e) {
     e.preventDefault();
     const data = new FormData(form);
     const action = e.target.action;
+    message.classList.remove('error');
+    message.innerText = "Please wait...";
     fetch(action, {
       method: 'POST',
       body: data,
     })
     .then(() => {
-      exitMail();
+      message.innerText = "Mail registered! Thank you!";
+      setTimeout(exitMail(), 2000);
+    })
+    .catch(err => {
+      message.innerText = "Mail already registered!"
+      message.classList.add('error');
     })
   });
 });

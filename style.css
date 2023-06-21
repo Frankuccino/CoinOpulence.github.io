@@ -8,6 +8,7 @@ html {
 html,body {
   margin: 0;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -776,6 +777,7 @@ color: #73CBAC;
 
 .options {
   position:absolute;
+  height: 25em;
   width: 22em;
   margin:auto;
   background-color: #0E6148;
@@ -911,4 +913,211 @@ color: #73CBAC;
   padding: 0.5em;
   align-self:center;
   width: fit-content;
+}
+
+.error {
+  color: rgb(196, 8, 8);
+}
+
+@media (max-width: 700px) {
+  #nav-container {
+    width: 100%;
+  }
+  nav{
+    display: block;
+    width: 100%;
+    top: 0;
+    margin: 0;
+  }
+  nav img{
+    display:block;
+    width: 70%;
+    margin: auto;
+    padding: 0.6em;
+  }
+  nav ul li{
+    margin: auto;
+    margin-left: 4vw;
+    margin-bottom: 1vh;
+    font-size: 1.4em;
+    padding: 0.5em;
+  }
+
+  html{
+    width: 100%;
+    background-size: cover;
+    margin: 0;
+  }
+  body{
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+  #faq{
+    width: 90%;
+  }
+  section{
+    width: 100%;
+  }
+  #faqSidebar{
+    font-size: 1.2em;
+  }
+  #faqSidebar p{
+    margin-left: 0.3em;
+  }
+  .faq-containerContent{
+    position:relative;
+    overflow-y: scroll;
+  }
+  #faqContent h2{
+    font-size: 2em;
+  }
+  #faqContent p{
+    position: absolute;
+    font-size: 1.5em;
+    overflow-y: scroll;
+    line-height: 3vh;
+  }
+  footer{
+    bottom:0;
+    left: 0;
+  }
+  .tableBody tr td{
+    font-size: 1.3em;
+    height: 3em;
+    padding: 0.5em 0.5em;
+  }
+  td button{
+    font-size: 1.5em;
+    margin: auto;
+    padding:0;
+  }
+  .tableSection #buttons{
+    position: block;
+    /* left: 0; */
+    /* top: 25vh; */
+    font-size: 2em;
+    margin:0;
+    padding: 0;
+    padding-right: auto;
+  }
+  .tableBody td button {
+    background-color: transparent;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    padding-left: 0.3em;
+  }
+  .buttonShowMore{
+    position: absolute;
+    left: 50%;
+    bottom: 17vh;
+    align-items:center;
+    /* margin-bottom: 5em; */
+    height:fit-content;
+    transform: translate(-50%, 0);
+  }
+  .buttonShowMore button{
+    font-size: 1.4em;
+  }
+  .table-container{
+    overflow-x: scroll;
+    margin:0;
+  }
+  table{
+    position: relative;
+    overflow-x: scroll;
+    margin-top: 1em;
+    margin-bottom: 18vh;
+  }
+  #buttons,
+  form button{
+    font-size: 1em;
+    /* top: 12vh; */
+    padding: 0.6em 0.8em;
+    margin: 0.5em;
+    text-align: center;
+  }
+  .tableSection #buttons{
+    margin: 0;
+    padding: 0;
+  }
+  nav #searchsection{
+    display: block;
+    padding: 0.5em;
+    margin: 0;
+    font-size: 1.5em;
+    text-align: center;
+  }
+  #searchsection input{
+    font-size: 1em;
+  }
+  #hero{
+    width:100%;
+  }
+  #hero .hero-container {
+    margin: 1.0em;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .hero-container p{
+    color: white;
+    font-size: 1em;
+    margin-bottom: 0.3em;
+  }
+  .hero-container h3{
+    color: white;
+    margin-bottom: 0.6em;
+    margin-top: 0;
+    font-weight:lighter;
+    font-size: 1.5em;
+  }
+  #modal{
+    width: 100%;
+    font-size: x-large;
+  }
+  #modal button{
+    font-size: larger;
+  }
+  #mail{
+    width: 80%;
+    font-size: x-large;
+  }
+  #mailForm div input {
+    width: 90%;
+    font-size: 1em;
+  }
+  #mail button{
+    font-size: larger;
+  }
+  #mail h3{
+    margin-top: 2.5em;
+  }
+  #mailForm {
+    margin: 1em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    text-align: center;
+  }
+  .tableBodyfav tr td{
+    font-size: 1.3em;
+    height: 3em;
+    padding: 0.5em 0.5em;
+}
+footer{
+  bottom: 0;
+  position: absolute;
+}
+.options{
+  font-size: x-large;
+}
+.options button{
+  font-size: larger;
+}
+#optionsForm div input{
+  font-size:x-large;
+}
 }
