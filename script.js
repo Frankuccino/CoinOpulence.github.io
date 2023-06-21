@@ -4,7 +4,14 @@ function adjustBodyHeight() {
     document.body.style.minHeight = `${tableHeight}px`;
     document.documentElement.style.setProperty('--bggradient', 'linear-gradient(to bottom, #0E6148, #003122)');
   }
-  
+
+let currencyUuid = 'yhjMzLPhuIDl';
+let currencySign = '$';
+let recentHeaderType = 'marketCap';
+let recentSortDirection = 'desc';
+let timePeriod = '24h';
+let offset = 0; // Initial offset
+const limit = 50; 
 // Function for fetching market data
 function fetchMarketData(currencyUuid = 'yhjMzLPhuIDl') {
 // Make the API request
@@ -438,13 +445,6 @@ changeHeader.addEventListener('click', () => {
 });
 
 // Set the current value of the arguments going to be used as parameter from the argument being passed to call it again.
-let currencyUuid = 'yhjMzLPhuIDl';
-let currencySign = '$';
-let recentHeaderType = 'marketCap';
-let recentSortDirection = 'desc';
-let timePeriod = '24h';
-let offset = 0; // Initial offset
-const limit = 50; 
 
 function recentSortedTable(headerType, sortDirection, timePeriod, uuid, sign, offset) {
   currencyUuid = uuid;
