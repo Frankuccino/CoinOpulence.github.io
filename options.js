@@ -4,8 +4,6 @@ const optionButton = document.querySelector('#customize');
 const optionsForm = document.querySelector('#optionsForm');
 
 // Set the default time period which would be changed based on the customize option user picked.
-let timePeriod = '24h';
-
 const openOptions = () => {
     optionsContainer.style.display = 'block';
 };
@@ -21,7 +19,6 @@ optionsClose.addEventListener('click', closeOptions);
 optionsForm.addEventListener('submit', (e) => {
     e.preventDefault();
     optionsContainer.style.display = 'none';
-    //  recentSortedTable();
 
     const price = document.querySelector('#price');
     const priceCol = document.querySelectorAll('.price');
@@ -31,13 +28,11 @@ optionsForm.addEventListener('submit', (e) => {
         for(let i = 0; i < priceCol.length; i++){
         priceCol[i].classList.add("hide");
     }
-        // console.log('price off')
     } else {
         priceHeader.classList.remove("hide");
         for(let i = 0; i < priceCol.length; i++){
             priceCol[i].classList.remove("hide");
         }
-        // console.log('price on')
     }
     
     const marketCap = document.querySelector('#marketCap');
@@ -48,13 +43,11 @@ optionsForm.addEventListener('submit', (e) => {
         for(let i = 0; i < marketCapCol.length; i++){
             marketCapCol[i].classList.add("hide");
     }
-        // console.log('mcap off')
     } else {
         marketCapHeader.classList.remove("hide");
         for(let i = 0; i < marketCapCol.length; i++){
             marketCapCol[i].classList.remove("hide");
         }
-        // console.log('mcap on')
     }
 
     const vol24 = document.querySelector('#vol24h');
@@ -65,13 +58,11 @@ optionsForm.addEventListener('submit', (e) => {
         for(let i = 0; i < vol24Col.length; i++){
             vol24Col[i].classList.add("hide");
     }
-        // console.log('vol24 off')
     } else {
         vol24Header.classList.remove("hide");
         for(let i = 0; i < vol24Col.length; i++){
             vol24Col[i].classList.remove("hide");
         }
-        // console.log('vol24 on')
     }
 
     const change1h = document.querySelector('#h1');
@@ -86,7 +77,7 @@ optionsForm.addEventListener('submit', (e) => {
             volumeSpan.textContent = ` (${timePeriod})`;
             changeSpan.textContent = ` (${timePeriod})`;
             // recentSortedTable(undefined, undefined, timePeriod);
-            fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+            fetchCoins(undefined, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
             showPopup(`Hourly Price Change`);
             console.log('Displaying 1h data.')
         }else if(change24h.checked == true){
@@ -94,7 +85,7 @@ optionsForm.addEventListener('submit', (e) => {
             volumeSpan.textContent = ` (${timePeriod})`;
             changeSpan.textContent = ` (${timePeriod})`;
             // recentSortedTable(undefined, undefined, timePeriod);
-            fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+            fetchCoins(undefined, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
             showPopup(`Daily Price Change`);
             console.log('Displaying 24 data')
         }else if(change7d.checked == true){
@@ -102,7 +93,7 @@ optionsForm.addEventListener('submit', (e) => {
             volumeSpan.textContent = ` (${timePeriod})`;
             changeSpan.textContent = ` (${timePeriod})`;
             // recentSortedTable(undefined, undefined, timePeriod);
-            fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+            fetchCoins(undefined, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
             showPopup(`Weekly Price Change`);
             console.log('Displaying 7d data')
         }else if(change30d.checked == true){
@@ -110,7 +101,7 @@ optionsForm.addEventListener('submit', (e) => {
             volumeSpan.textContent = ` (${timePeriod})`;
             changeSpan.textContent = ` (${timePeriod})`;
             // recentSortedTable(undefined, undefined, timePeriod);
-            fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+            fetchCoins(undefined, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
             showPopup(`Monthly Price Change`);
             console.log('Displaying 30d data.')
         }
@@ -129,9 +120,6 @@ optionsForm.addEventListener('submit', (e) => {
             setChartDays = 30;
             showPopup(`Monthly Chart Change`);
         }
-        // recentSortedTable(undefined, undefined, timePeriod);
-        // fetchCoins(undefined, undefined, recentTimePeriod, recentHeaderType, recentSortDirection);
-        // recentSortedTable();
     });
 // Time period is now being stored for everytime the user sorts it out
 

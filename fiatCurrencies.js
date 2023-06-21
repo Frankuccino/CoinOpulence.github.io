@@ -34,9 +34,6 @@
 //</div>
 
 // also update the placeholder value to it's sign ex. USD
-let currencyUuid = 'yhjMzLPhuIDl';
-let currencySign = '$';
-
 function fiatCurrency() {
     const url = 'https://coinranking1.p.rapidapi.com/reference-currencies';
     const params = {
@@ -71,12 +68,13 @@ function fiatCurrency() {
 
                     option.classList.add('activeCurrency');
 
-                    recentSortedTable(recentHeaderType, recentSortDirection, timePeriod, uuid, sign)
+                    recentSortedTable(recentHeaderType, recentSortDirection, timePeriod, uuid, sign, offset)
                     fetchMarketData(uuid)
+                    showModal(undefined, uuid)
                     // fetchChartData(undefined, undefined, undefined, uuid)
                 });
 
-                const currencyName = document.createElement('span');
+                const currencyName = document.createElement('span'); 
                 currencyName.classList.add('currencyName');
                 currencyName.textContent = name;
 

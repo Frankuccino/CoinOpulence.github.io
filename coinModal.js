@@ -1,16 +1,16 @@
 
-const headers = {
-  'X-RapidAPI-Key': 'a9c927165cmsh44f527792645fccp1954a7jsn1814abc98e08',
-  'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
-};
-
 function showModal(uuid, currencyUuid) {
-  const paramsSM = {
+  const url = `https://coinranking1.p.rapidapi.com/coin/${uuid}`;
+  const params = {
     referenceCurrencyUuid: currencyUuid,
     timePeriod: timePeriod
   };
+  const headers = {
+    'X-RapidAPI-Key': 'a9c927165cmsh44f527792645fccp1954a7jsn1814abc98e08',
+    'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+  };
 
-  axios.get(`https://coinranking1.p.rapidapi.com/coin/${uuid}`, { paramsSM, headers })
+  axios.get(url, {params, headers})
     .then(response => {
       const coinData = response.data.data.coin;
       const { symbol, name, description, iconUrl, price, marketCap, change, websiteUrl } = coinData;

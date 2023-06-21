@@ -264,20 +264,74 @@ const apiKey = 'a9c927165cmsh44f527792645fccp1954a7jsn1814abc98e08';
   }
 fetchCoins(50);
 
+const page1 = document.querySelector('.pageN1');
+const page2 = document.querySelector('.pageN2');
+const page3 = document.querySelector('.pageN3');
+const page4 = document.querySelector('.pageN4');
+const page5 = document.querySelector('.pageN5');
+const currentPageN = document.querySelector('.currentPage');
+
+// Check line 468 for the globally declared variables. 
 
 const showMoreButton = document.getElementById('showMoreButton');
-let offset = 0; // Initial offset
-const limit = 50; 
 showMoreButton.addEventListener('click', () => {
     offset += limit; // Increment the offset by the limit value
     // fetchCoins(limit, offset);
-    fetchCoins(limit, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+    // fetchCoins(limit, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+    recentSortedTable(recentHeaderType, recentSortDirection, recentTimePeriod, currencyUuid, currencySign, offset);
   });
+
+page1.addEventListener('click', () => {
+  const currentPageN = document.querySelector('.currentPage');
+  currentPageN.classList.remove('currentPage');
+  page1.classList.add('currentPage');
+  offset = 0;
+  // fetchCoins(limit, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+  recentSortedTable(recentHeaderType, recentSortDirection, recentTimePeriod, currencyUuid, currencySign, offset);
+})
+
+page2.addEventListener('click', () => {
+  const currentPageN = document.querySelector('.currentPage');
+  currentPageN.classList.remove('currentPage');
+  page2.classList.add('currentPage');
+  offset = 50;
+  // fetchCoins(limit, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+  recentSortedTable(recentHeaderType, recentSortDirection, recentTimePeriod, currencyUuid, currencySign, offset);
+})
+
+page3.addEventListener('click', () => {
+  const currentPageN = document.querySelector('.currentPage');
+  currentPageN.classList.remove('currentPage');
+  page3.classList.add('currentPage');
+  offset = 100;
+  // fetchCoins(limit, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+  recentSortedTable(recentHeaderType, recentSortDirection, recentTimePeriod, currencyUuid, currencySign, offset);
+})
+
+page4.addEventListener('click', () => {
+  const currentPageN = document.querySelector('.currentPage');
+  currentPageN.classList.remove('currentPage');
+  page4.classList.add('currentPage');
+  offset = 150;
+  // fetchCoins(limit, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+  recentSortedTable(recentHeaderType, recentSortDirection, recentTimePeriod, currencyUuid, currencySign, offset);
+})
+
+page5.addEventListener('click', () => {
+  const currentPageN = document.querySelector('.currentPage');
+  currentPageN.classList.remove('currentPage');
+  page5.classList.add('currentPage');
+  offset = 200;
+  // fetchCoins(limit, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+  recentSortedTable(recentHeaderType, recentSortDirection, recentTimePeriod, currencyUuid, currencySign, offset);
+})
+
+
 
 const showMoreButton_1 = document.getElementById('showMoreButton-1');
 showMoreButton_1.addEventListener('click', () => {
 offset -= limit; // Increment the offset by the limit value
-// fetchCoins(limit, offset);
+
 fetchCoins(limit, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
 });
 
@@ -382,7 +436,7 @@ function toggleSortDirection(sortIcon) {
 priceHeader.addEventListener('click', () => {
   const sortIcon = priceHeader.querySelector('.sortIcon');
   const sortDirection = toggleSortDirection(sortIcon);
-  recentSortedTable('price', sortDirection, timePeriod || '24h', currencyUuid, currencySign);
+  recentSortedTable('price', sortDirection, timePeriod || '24h', currencyUuid, currencySign, offset);
   showPopup(`Sorting The Table by Price`);
 });
 
@@ -390,7 +444,7 @@ priceHeader.addEventListener('click', () => {
 marketCapHeader.addEventListener('click', () => {
   const sortIcon = marketCapHeader.querySelector('.sortIcon');
   const sortDirection = toggleSortDirection(sortIcon);
-  recentSortedTable('marketCap', sortDirection, timePeriod || '24h', currencyUuid, currencySign);
+  recentSortedTable('marketCap', sortDirection, timePeriod || '24h', currencyUuid, currencySign, offset);
   showPopup(`Sorting The Table by Market Cap`);
 });
 
@@ -398,7 +452,7 @@ marketCapHeader.addEventListener('click', () => {
 volumeHeader.addEventListener('click', () => {
   const sortIcon = volumeHeader.querySelector('.sortIcon');
   const sortDirection = toggleSortDirection(sortIcon);
-  recentSortedTable('24hVolume', sortDirection, timePeriod || '24h', currencyUuid, currencySign);
+  recentSortedTable('24hVolume', sortDirection, timePeriod || '24h', currencyUuid, currencySign, offset);
   showPopup(`Sorting The Table by Volume`);
 });
 
@@ -406,21 +460,26 @@ volumeHeader.addEventListener('click', () => {
 changeHeader.addEventListener('click', () => {
   const sortIcon = changeHeader.querySelector('.sortIcon');
   const sortDirection = toggleSortDirection(sortIcon);
-  recentSortedTable('change', sortDirection, timePeriod || '24h', currencyUuid, currencySign);
+  recentSortedTable('change', sortDirection, timePeriod || '24h', currencyUuid, currencySign, offset);
   showPopup(`Sorting The Table by Change`);
 });
 
 // Set the current value of the arguments going to be used as parameter from the argument being passed to call it again.
+let currencyUuid = 'yhjMzLPhuIDl';
+let currencySign = '$';
 let recentHeaderType = 'marketCap';
 let recentSortDirection = 'desc';
+let timePeriod = '24h';
+let offset = 0; // Initial offset
+const limit = 50; 
 
-function recentSortedTable(headerType, sortDirection, timePeriod, uuid, sign) {
+function recentSortedTable(headerType, sortDirection, timePeriod, uuid, sign, offset) {
   currencyUuid = uuid;
   currencySign = sign;
   recentHeaderType = headerType;
   recentSortDirection = sortDirection;
   recentTimePeriod = timePeriod;
-  fetchCoins(undefined, undefined, recentTimePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+  fetchCoins(limit, offset, recentTimePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
 }
 
 fetchMarketData();
