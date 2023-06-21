@@ -183,21 +183,24 @@ p.hero-info {
 }
 
 .caret-currency {
-  margin-left: 4px;
+  /* margin-left: 4px; */
   position: absolute;
-  right: 1em;
-  top: 0.85em;
+  right: 1.3em;
+  top: 1.3em;
   color: #fff;
 }
 
 .dropdown input {
-  border-radius: 0.3em;
+  border-radius: 0.7em;
   border: none;
-  padding: 0.5em;
+  padding: 1em;
+  padding-left: 0.7em;
+  padding-right: 0.7em;
   align-self: center;
   margin: 0.8em;
   width: 5em;
   background-color: #41A883;
+  font-size: 0.8em;
 }
 
 .dropdown input::placeholder{
@@ -1119,5 +1122,10 @@ footer{
 }
 #optionsForm div input{
   font-size:x-large;
+}
+.menu{
+  top: 270%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 }
