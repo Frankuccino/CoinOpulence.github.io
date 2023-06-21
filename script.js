@@ -337,7 +337,7 @@ const showMoreButton_1 = document.getElementById('showMoreButton-1');
 showMoreButton_1.addEventListener('click', () => {
 offset -= limit; // Increment the offset by the limit value
 
-fetchCoins(limit, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+recentSortedTable(recentHeaderType, recentSortDirection, timePeriod, currencyUuid, currencySign, offset);
 });
 
 // Function for displaying the popup message

@@ -777,13 +777,13 @@ color: #73CBAC;
 
 .options {
   position:absolute;
-  height: 25em;
   width: 22em;
   margin:auto;
   background-color: #0E6148;
-  height: 54%;
-  top: 25%;
-  left: 40%;
+  height: 25em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 0.5em;
   border: #41A883 1px solid;
 }
