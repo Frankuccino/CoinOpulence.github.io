@@ -399,3 +399,35 @@ faq27.addEventListener('click', () =>{
     faqContent.appendChild(faqBody);
     return faqContent;
 });
+
+// const faqSearch = document.querySelector('#faqSearch');
+// const faqSidebar = document.querySelector('#faqSidebar');
+
+// faqSearch.addEventListener('input', () => {
+//     const faqTopics = faqSidebar.querySelectorAll('p');  
+//     const faqLowered = faqTopics.textContent.toLowerCase();  
+//     for (const p of faqLowered){
+//         if (p.textContent.includes(faqSearch.value)) {
+//             p.classList.remove('hide');
+//         } else {
+//             p.classList.add('hide');
+//         }
+//     }
+// })
+const faqSearch = document.querySelector('#faqSearch');
+const faqSidebar = document.querySelector('#faqSidebar');
+
+faqSearch.addEventListener('input', () => {
+    const faqTopics = Array.from(faqSidebar.querySelectorAll('p'));  
+    const faqSearchValue = faqSearch.value.toLowerCase();
+    
+    for (const p of faqTopics) {
+        const faqText = p.textContent.toLowerCase();
+        
+        if (faqText.includes(faqSearchValue)) {
+            p.classList.remove('hide');
+        } else {
+            p.classList.add('hide');
+        }
+    }
+});
