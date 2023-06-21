@@ -93,3 +93,41 @@ function fiatCurrency() {
 }
 
 fiatCurrency();
+// Assuming you have an input element with class "search"
+const searchInput = document.querySelector('.search');
+
+searchInput.addEventListener('input', (event) => {
+  const searchTerm = event.target.value.toLowerCase(); // Get the entered search term in lowercase
+
+  // Select all the currency options
+  const currencyOptions = document.querySelectorAll('.option');
+
+  currencyOptions.forEach((option) => {
+    
+    const currencyName = option.querySelector('.currencyName');
+    const currencySymbol = option.querySelector('.currencySymbol');
+
+    const name = currencyName.textContent.toLowerCase();
+    const symbol = currencySymbol.textContent.toLowerCase();
+
+    // Check if the search term matches the currency name or symbol
+    if (name.includes(searchTerm) || symbol.includes(searchTerm)) {
+        option.style.display = 'block'; 
+        option.style.fontSize = '0.7em';
+        option.style.display = 'flex';
+        option.style.flexDirection = 'column';
+        option.style.alignItems = 'flex-start';
+        option.style.padding = '0.5em';
+        option.style.cursor = 'pointer';
+        option.addEventListener('click', () => {
+                    
+        searchInput.value = '';
+        option.classList.add('activeCurrency');
+    })
+    } else {
+      option.style.display = 'none'; // Hide the option if it doesn't match the search term
+    }
+  });
+});
+
+// need to add here and fix the search eventlistener where when if the search input is ''; it would just show all of the menu

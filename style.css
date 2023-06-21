@@ -117,12 +117,13 @@ section {
 
 #hero {
   display: flex;
+  flex-wrap: wrap;
   background-color: rgba(83, 146, 62, 0.8); /* Background color with 50% opacity */
   background-image: url(./bgimagebig.jpg);
   background-size: cover;
   background-position: center;
   border-radius: 0.5em;
-  margin: auto;
+  /* margin: auto; */
   border: #41A883 solid 1px;
   background-blend-mode: overlay;
 }
@@ -143,6 +144,20 @@ section {
   margin-bottom: 0.6em;
   margin-top: 0;
   font-weight:lighter;
+}
+
+.hero-info {
+  color: white;
+  text-align: left;
+  margin: 0;
+  font-size: 0.8em;
+}
+
+p.hero-info {
+  color: #d6d6d6;
+  margin-left: 2em;
+  margin-bottom: 0.8em;
+  margin-right: 2em;
 }
 
 #refresh {
