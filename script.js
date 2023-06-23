@@ -123,9 +123,14 @@ const refreshButton = document.getElementById('refresh');
 refreshButton.addEventListener('click', () => {
   // Call the fetchCoins function with the desired parameters
   showPopup("Data is reloading...");
+  if(currentActivePage === false){
   fetchCoins(undefined, undefined, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
   // recentSortedTable();
   fetchMarketData(currencyUuid);
+}else {
+  updateFavorites(currencyUuid, timePeriod);
+}
+  
 });
 
 

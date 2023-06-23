@@ -2,7 +2,6 @@ const favoritesUuid = [];
 const favoritesTableBody = document.querySelector('.tableBodyfav');
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetchMarketData(currencyUuid);
     loadFavorites();
     updateFavorites(currencyUuid, timePeriod);
     currentActivePage = true
@@ -40,6 +39,7 @@ function updateFavorites(currencyUuid, timePeriod) {
 
     for (let uuid of favoritesUuid){
         loadTheTableFav(uuid, currencyUuid, timePeriod);
+          fetchMarketData(currencyUuid);
     }
 }
 function loadTheTableFav(uuid, currencyUuid, timePeriod) {
