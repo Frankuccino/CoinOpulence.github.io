@@ -69,9 +69,10 @@ function fiatCurrency() {
                     option.classList.add('activeCurrency');
 
                     recentSortedTable(recentHeaderType, recentSortDirection, timePeriod, uuid, sign, offset)
-                    fetchMarketData(uuid)
-                    showModal(undefined, uuid)
+                    // fetchMarketData(uuid)
+                    // showModal(undefined, uuid)
                     // fetchChartData(undefined, undefined, undefined, uuid)
+
                 });
 
                 const currencyName = document.createElement('span'); 

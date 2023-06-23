@@ -4,7 +4,7 @@ function adjustBodyHeight() {
     document.body.style.minHeight = `${tableHeight}px`;
     document.documentElement.style.setProperty('--bggradient', 'linear-gradient(to bottom, #0E6148, #003122)');
   }
-
+let currentActivePage = false;
 let currencyUuid = 'yhjMzLPhuIDl';
 let currencySign = '$';
 let recentHeaderType = 'marketCap';
@@ -183,11 +183,35 @@ const apiKey = 'a9c927165cmsh44f527792645fccp1954a7jsn1814abc98e08';
           
           const starCell = document.createElement('td');
           const starButton = document.createElement('button');
-          starButton.setAttribute('onclick', 'highlightIcon(this)');
+          // starButton.setAttribute('onclick', 'highlightIcon(this)');
           const starIcon = document.createElement('i');
           starIcon.classList.add('bi', 'bi-star');
           starButton.appendChild(starIcon);
           starCell.appendChild(starButton);
+
+          if (favoritesUuid.includes(uuid)) {
+            starIcon.className = 'bi bi-star-fill';
+            starButton.classList.add('clicked');
+          } else {
+            starIcon.className = 'bi bi-star';
+            starButton.classList.remove('clicked');
+          }
+
+          // Create a eventlistener here for the starButton NEW*
+          starButton.addEventListener('click', () => {
+            if (starIcon.classList.contains('bi-star-fill')) {
+              starIcon.className = 'bi bi-star';
+              starButton.classList.remove('clicked');
+              showPopup(`Removed ${name} to favorites`);
+              removeFavorites(uuid);
+            } else {
+              starIcon.className = 'bi bi-star-fill';
+              starButton.classList.add('clicked');
+              showPopup(`Added ${name} to favorites`);
+              addFavorites(uuid);
+            }
+          });
+          // end of added feature for the button
       
           const rankCell = document.createElement('td');
           rankCell.textContent = rank;
@@ -452,7 +476,14 @@ function recentSortedTable(headerType, sortDirection, timePeriod, uuid, sign, of
   recentHeaderType = headerType;
   recentSortDirection = sortDirection;
   recentTimePeriod = timePeriod;
+
+  fetchMarketData(currencyUuid);
+
+  if(currentActivePage === false){
   fetchCoins(limit, offset, recentTimePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+  }else{
+  updateFavorites(currencyUuid, timePeriod);
+}
 }
 
 fetchMarketData();

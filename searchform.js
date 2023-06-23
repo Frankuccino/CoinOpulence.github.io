@@ -68,6 +68,28 @@ searchForm.addEventListener('submit', (e) => {
               starIcon.classList.add('bi', 'bi-star');
               starButton.appendChild(starIcon);
               starCell.appendChild(starButton);
+
+              if (favoritesUuid.includes(uuid)) {
+                starIcon.className = 'bi bi-star-fill';
+                starButton.classList.add('clicked');
+              } else {
+                starIcon.className = 'bi bi-star';
+                starButton.classList.remove('clicked');
+              }
+
+              starButton.addEventListener('click', () => {
+                if (starIcon.classList.contains('bi-star-fill')) {
+                  starIcon.className = 'bi bi-star';
+                  starButton.classList.remove('clicked');
+                  showPopup(`Removed ${name} to favorites`);
+                  removeFavorites(uuid);
+                } else {
+                  starIcon.className = 'bi bi-star-fill';
+                  starButton.classList.add('clicked');
+                  showPopup(`Added ${name} to favorites`);
+                  addFavorites(uuid);
+                }
+              });
       
               const rankCell = document.createElement('td');
               rankCell.textContent = rank;

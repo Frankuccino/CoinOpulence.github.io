@@ -77,7 +77,11 @@ optionsForm.addEventListener('submit', (e) => {
             volumeSpan.textContent = ` (${timePeriod})`;
             changeSpan.textContent = ` (${timePeriod})`;
             // recentSortedTable(undefined, undefined, timePeriod);
-            fetchCoins(undefined, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+            if(currentActivePage === false){
+                fetchCoins(undefined, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+            }else{
+                updateFavorites(currencyUuid, timePeriod);
+            }
             showPopup(`Hourly Price Change`);
             console.log('Displaying 1h data.')
         }else if(change24h.checked == true){
@@ -85,7 +89,11 @@ optionsForm.addEventListener('submit', (e) => {
             volumeSpan.textContent = ` (${timePeriod})`;
             changeSpan.textContent = ` (${timePeriod})`;
             // recentSortedTable(undefined, undefined, timePeriod);
-            fetchCoins(undefined, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+            if(currentActivePage === false){
+                fetchCoins(undefined, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+            }else{
+                updateFavorites(currencyUuid, timePeriod);
+            }
             showPopup(`Daily Price Change`);
             console.log('Displaying 24 data')
         }else if(change7d.checked == true){
@@ -93,7 +101,11 @@ optionsForm.addEventListener('submit', (e) => {
             volumeSpan.textContent = ` (${timePeriod})`;
             changeSpan.textContent = ` (${timePeriod})`;
             // recentSortedTable(undefined, undefined, timePeriod);
-            fetchCoins(undefined, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+            if(currentActivePage === false){
+                fetchCoins(undefined, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+            }else{
+                updateFavorites(currencyUuid, timePeriod);
+            }
             showPopup(`Weekly Price Change`);
             console.log('Displaying 7d data')
         }else if(change30d.checked == true){
@@ -101,7 +113,12 @@ optionsForm.addEventListener('submit', (e) => {
             volumeSpan.textContent = ` (${timePeriod})`;
             changeSpan.textContent = ` (${timePeriod})`;
             // recentSortedTable(undefined, undefined, timePeriod);
-            fetchCoins(undefined, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+            if(currentActivePage === false){
+                fetchCoins(undefined, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
+            }else{
+                updateFavorites(currencyUuid, timePeriod);
+            }
+
             showPopup(`Monthly Price Change`);
             console.log('Displaying 30d data.')
         }
