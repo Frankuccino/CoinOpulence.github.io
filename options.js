@@ -76,7 +76,6 @@ optionsForm.addEventListener('submit', (e) => {
             timePeriod = '1h';
             volumeSpan.textContent = ` (${timePeriod})`;
             changeSpan.textContent = ` (${timePeriod})`;
-            // recentSortedTable(undefined, undefined, timePeriod);
             if(currentActivePage === false){
                 fetchCoins(undefined, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
             }else{
@@ -112,7 +111,6 @@ optionsForm.addEventListener('submit', (e) => {
             timePeriod = '30d';
             volumeSpan.textContent = ` (${timePeriod})`;
             changeSpan.textContent = ` (${timePeriod})`;
-            // recentSortedTable(undefined, undefined, timePeriod);
             if(currentActivePage === false){
                 fetchCoins(undefined, offset, timePeriod, recentHeaderType, recentSortDirection, currencyUuid, currencySign);
             }else{
@@ -138,16 +136,3 @@ optionsForm.addEventListener('submit', (e) => {
             showPopup(`Monthly Chart Change`);
         }
     });
-// Time period is now being stored for everytime the user sorts it out
-
-//  Needs to fix where when user uses the customize button it would still be in the format of the recently used sort 
-    // need to fix where whenever user click the button or option for the it would still sort it 
-
-
-
-    //  Everything works already with the problem of customizing the table while being sorted
-    // Changes: I've called the main function with the parameters that was recently used as arguments so it will call it every changes.
-// Notes: The API will return error 429 once it's being fetched too much within a minute or the table is being customized too fast.
-
-
-// changed the fetchCoins 3rd argument to

@@ -124,7 +124,6 @@ section {
   background-size: cover;
   background-position: center;
   border-radius: 0.5em;
-  /* margin: auto; */
   border: #41A883 solid 1px;
   background-blend-mode: overlay;
 }
@@ -183,7 +182,6 @@ p.hero-info {
 }
 
 .caret-currency {
-  /* margin-left: 4px; */
   position: absolute;
   right: 1.3em;
   top: 1.3em;
@@ -419,9 +417,9 @@ td {
 
 .buttonShowMore {
   display: flex;
-  justify-content: center; /* Horizontally center the button */
-  align-items: center; /* Vertically center the button */
-  height: 100%; /* Set the height of the container */
+  justify-content: center; 
+  align-items: center; 
+  height: 100%; 
   margin: 0.8em;
   border-radius: 0.5em;
   font-size: 1em;
@@ -440,7 +438,6 @@ td {
 .buttonShowMore span {
   margin: 0.1em 0.5rem 0.1em 0.1em;
   color: #41A883 ;
-  /* padding:0.5em 1em; */
   border-radius: 0.5em;
 }
 
@@ -556,7 +553,6 @@ footer .footCopyright span {
 /*  pop up */
 .popup {
   position: fixed;
-  /* bottom: 20px; */
   top: 90px;
   right: 20px;
   background-color: rgba(10, 29, 6, 0.8);
@@ -571,7 +567,6 @@ footer .footCopyright span {
 .popup-text {
   margin: 0;
 }
-
 
 /* tableBodyFav styling for the favorites.html */
 .tableBodyfav td button {
@@ -618,7 +613,6 @@ color: #73CBAC;
   position: fixed;
   bottom: 20px;
   right: 30px;
-  /* background-color: #41A883; */
   background-color: rgba(65, 168, 131, 0.5);
   color: #ffffff;
   border: none;
@@ -675,7 +669,6 @@ color: #73CBAC;
 
 #modal-logo {
   aspect-ratio: auto;
-  /* width: 2vw; */
   height: 30px;
   padding-top: 0.7em;
   display: inline-block;
@@ -854,8 +847,6 @@ color: #73CBAC;
 
 /* chart styles */
 #myChart {
-  /* width: 164px !important;
-  height: 53px !important; */
   margin: 0 !important;
   display: inline-block;
   box-sizing: content-box;
@@ -998,8 +989,6 @@ color: #73CBAC;
   }
   .tableSection #buttons{
     position: block;
-    /* left: 0; */
-    /* top: 25vh; */
     font-size: 2em;
     margin:0;
     padding: 0;
@@ -1019,7 +1008,6 @@ color: #73CBAC;
     left: 50%;
     bottom: 17vh;
     align-items:center;
-    /* margin-bottom: 5em; */
     height:fit-content;
     transform: translate(-50%, 0);
   }
@@ -1039,7 +1027,6 @@ color: #73CBAC;
   #buttons,
   form button{
     font-size: 1em;
-    /* top: 12vh; */
     padding: 0.6em 0.8em;
     margin: 0.5em;
     text-align: center;

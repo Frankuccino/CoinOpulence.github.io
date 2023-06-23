@@ -76,7 +76,6 @@ function showModal(uuid, currencyUuid) {
 
 
 let setChartDays = 1;
-// Function to fetch and load chart data
 function fetchChartData(uuid, numberOfDays = 1, interval = "hour", currencyUuid) {
   const url = `https://coinranking1.p.rapidapi.com/coin/${uuid}/ohlc`;
   
@@ -86,7 +85,7 @@ function fetchChartData(uuid, numberOfDays = 1, interval = "hour", currencyUuid)
     referenceCurrencyUuid: currencyUuid,
     interval: interval,
     limit: numberOfDays * 24
-    // limit is number of days times number of days so number of days is 1 so 24 points in shown in the chart.
+ 
     };
     const headers = {
         'X-RapidAPI-Key': 'a9c927165cmsh44f527792645fccp1954a7jsn1814abc98e08',
@@ -184,7 +183,6 @@ function fetchChartData(uuid, numberOfDays = 1, interval = "hour", currencyUuid)
           }
         });
       })
-      
       .catch(error => {
         console.error('An error occurred:', error);
       })

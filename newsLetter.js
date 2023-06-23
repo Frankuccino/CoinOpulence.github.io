@@ -35,10 +35,10 @@ window.addEventListener("load", function() {
     })
     .then(() => {
       message.innerText = "Mail registered! Thank you!";
-      setTimeout(exitMail(), 2000);
+      setTimeout(exitMail, 5000);
     })
     .catch(err => {
-      message.innerText = "Mail already registered!"
+      message.innerText = "Mail already exists"
       message.classList.add('error');
     })
   });

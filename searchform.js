@@ -29,7 +29,7 @@ searchForm.addEventListener('submit', (e) => {
         coins.forEach(coin => { 
   
           coinArray.push(coin.uuid);
-          // console.log(coinArray);
+
         });
           for(let coinId of coinArray) {
             const url2 = `https://coinranking1.p.rapidapi.com/coin/${coinId}`;
@@ -56,7 +56,6 @@ searchForm.addEventListener('submit', (e) => {
                 const isFavoritesButton = event.target.classList.contains('bi');
                 if (!isFavoritesButton) {
                   showModal(uuid);
-                  // fetchChartData(uuid);
                 }
               });
       
@@ -170,5 +169,3 @@ searchForm.addEventListener('submit', (e) => {
           });
           })
         
-// Added line 54 (eventListener) for the coin's modal. 
-// Added classes for the td for the customize functionality Line 87, Line 105, Line 113.
