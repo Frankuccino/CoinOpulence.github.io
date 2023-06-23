@@ -96,10 +96,12 @@ const changeHeader = document.querySelector('.obChangefav');
         if (starIcon.classList.contains('bi-star-fill')) {
           starIcon.className = 'bi bi-star';
           starButton.classList.remove('clicked');
+          showPopup(`Removed ${name} to favorites`);
           removeFavorites(uuid);
         } else {
           starIcon.className = 'bi bi-star-fill';
           starButton.classList.add('clicked');
+          showPopup(`Added ${name} to favorites`);
           addFavorites(uuid);
         }
       });

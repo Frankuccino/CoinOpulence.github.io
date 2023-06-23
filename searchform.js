@@ -34,8 +34,8 @@ searchForm.addEventListener('submit', (e) => {
           for(let coinId of coinArray) {
             const url2 = `https://coinranking1.p.rapidapi.com/coin/${coinId}`;
             const params2 = {
-              referenceCurrencyUuid: 'yhjMzLPhuIDl',
-              timePeriod: '24h',
+              referenceCurrencyUuid: currencyUuid,
+              timePeriod: timePeriod,
             };
             axios.get(url2, {params2, headers})
             .then (response => {
@@ -107,7 +107,7 @@ searchForm.addEventListener('submit', (e) => {
       
               const priceCell = document.createElement('td');
               priceCell.classList.add('price');
-              priceCell.textContent = `$${formatPrice(price)}`;
+              priceCell.textContent = `${currencySign || ''}${formatPrice(price)}`;
               // function for formatting the price to the table
               function formatPrice(price) {
                 const parsedPrice = parseFloat(price);
@@ -125,11 +125,11 @@ searchForm.addEventListener('submit', (e) => {
 
             const marketCapCell = document.createElement('td');
             marketCapCell.classList.add('marketCaptd');
-            marketCapCell.textContent = `$${parseFloat(marketCap).toLocaleString('en-US')}`;
+            marketCapCell.textContent = `${currencySign || ''}${parseFloat(marketCap).toLocaleString('en-US')}`;
       
             const volumeCell = document.createElement('td');
             volumeCell.classList.add('vol24h');
-            volumeCell.textContent = parseFloat(volume).toLocaleString('en-US');
+            volumeCell.textContent = `${currencySign || ''}${parseFloat(volume).toLocaleString('en-US')}`;
       
             const changeCell = document.createElement('td');
             changeCell.classList.add('ch24h');
