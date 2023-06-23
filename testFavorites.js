@@ -19,7 +19,6 @@ function addFavorites(uuid) {
 
 function removeFavorites(uuid) {
     const index = favoritesUuid.indexOf(uuid);
-    console.log(index);
     if (index !== -1) {
         favoritesUuid.splice(index, 1);
         saveFavorites();
@@ -48,7 +47,6 @@ function loadTheTableFav(uuid, currencyUuid, timePeriod) {
     referenceCurrencyUuid: currencyUuid,
     timePeriod: timePeriod,
   };
-  console.log(currencyUuid);
   const headers = {
     'X-RapidAPI-Key': apiKey,
     'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
