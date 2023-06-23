@@ -181,3 +181,5 @@ const changeHeader = document.querySelector('.obChangefav');
 
 // Bugs needed to be fixed, the timePeriod and chart time period needs to be fi xed whenever user clicked it, it does change the value to the right value but doesn't change the value of the table.
 // The modal data won't update as well.
+
+// Fixed the coin Modal and data when user tries to customize the table.
